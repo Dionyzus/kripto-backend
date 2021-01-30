@@ -11,5 +11,20 @@
     "url": "kripto-backend"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
+    "bitcoind-rpc": "^0.8.1",
+    "body-parser": "^1.19.0",
+    "connect-mongo": "^3.2.0",
+    "connect-redis": "^5.0.0",
+    "cors": "^2.8.5",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.14",
+    "redis": "^3.0.2"
+  }
 }
