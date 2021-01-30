@@ -1,0 +1,1 @@
+export const secret = "kripto-secret-key";
