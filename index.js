@@ -6,6 +6,7 @@ import session from 'express-session';
 import home from './app/api/home';
 import auth from './app/api/auth/auth';
 import bitcoin from './app/api/bitcoin/bitcoin';
+import market from './app/api/bitcoin/market';
 import bodyParser from 'body-parser';
 
 export const app = express();
@@ -37,6 +38,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', home);
 app.use('/auth', auth);
 app.use('/bitcoin', bitcoin);
+app.use('/bitcoin/market', market);
 
 const hostname = '127.0.0.1';
 const port = 8080;
