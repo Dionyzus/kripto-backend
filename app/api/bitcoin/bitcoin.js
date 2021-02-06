@@ -103,4 +103,41 @@ bitcoinRouter.get("/transactions", async function (req, res) {
     });
 });
 
+bitcoinRouter.get("/search/:term", async function (req, res) {
+    try {
+        rpc.getBlock(
+            req.params.term,
+            function (err, ret) {
+                if (err) {
+                    console.error(err);
+                } else {
+                    res.json(ret);
+                }
+            }
+        ); 
+        try {
+            rpc.getRawTransaction(
+                req.params.term,
+                function (err, tx) {
+                    if (err) {
+                        console.error(err);
+                    } else {
+                        rpc.decodeRawTransaction(tx.result, function (err, decodedTx) {
+                            if (err) {
+                                console.error(err);
+                            } else {
+                                res.json(decodedTx);
+                            }
+                        });
+                    }
+                }
+            );
+        } catch (error) {
+            res.status(404).json({message: "Could not find searched data."})
+        }
+    } catch (error) {
+        res.status(404).json({message: "Could not find searched data."})
+    }
+});
+
 export default bitcoinRouter;
